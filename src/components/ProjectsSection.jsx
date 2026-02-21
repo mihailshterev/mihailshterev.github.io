@@ -1,4 +1,3 @@
-import React from 'react'
 import { useState, useEffect } from 'react'
 import { motion, useInView, useAnimation } from 'framer-motion'
 import projectPlaceholder from '../assets/projects/project-placeholder.webp'
@@ -65,22 +64,17 @@ export const ProjectsSection = ({elRef}) => {
               <div className='ellipse'></div>
               <div className="solar-orbit1">
                 <div 
-                onClick={() => selectProject('1', UniVerse, 'UniVerse' , 'https://github.com/Shredrox/UniVerseRemastered')} 
+                onClick={() => selectProject('1', UniVerse, 'UniVerse' , 'https://github.com/mihailshterev/UniVerseRemastered')} 
                 className={projectSelected == '1' ? 'selected-planet' : 'orbiting-ellipse'}></div>
-              </div>
-              <div className="solar-orbit2">
-                <div 
-                onClick={() => selectProject('2', projectPlaceholder, 'LifeLink', 'https://github.com/Shredrox/LifeLink')} 
-                className={projectSelected == '2' ? 'selected-planet' : 'orbiting-ellipse'}></div>
               </div>
               <div className="solar-orbit3">
                 <div 
-                onClick={() => selectProject('3', projectPlaceholder, 'TuneSpace', 'https://github.com/Shredrox/TuneSpace')} 
+                onClick={() => selectProject('3', projectPlaceholder, 'TuneSpace', 'https://github.com/mihailshterev/TuneSpace')} 
                 className={projectSelected == '3' ? 'selected-planet' : 'orbiting-ellipse'}></div>
               </div>
               <div className="solar-orbit4">
                 <div 
-                onClick={() => selectProject('4', musicUniverse, 'Music Universe' , 'https://github.com/Shredrox/Music-Universe')} 
+                onClick={() => selectProject('4', musicUniverse, 'Music Universe' , 'https://github.com/mihailshterev/Music-Universe')} 
                 className={projectSelected == '4' ? 'selected-planet' : 'orbiting-ellipse'}></div>
               </div>
             </div>
@@ -90,7 +84,7 @@ export const ProjectsSection = ({elRef}) => {
             <h3>{projectTitle}</h3>
             <img src={image} alt="" />
             {projectLink !== '' &&
-            <a href={projectLink} target='_blank'><button>Github Repo</button></a>
+              <a href={projectLink} target='_blank' rel="noreferrer"><button>Github Repo</button></a>
             }
           </div>
         </motion.div>
