@@ -1,4 +1,3 @@
-import React from 'react'
 import linkedinIcon from '../assets/linkedinIcon.png'
 import githubIcon from '../assets/githubIcon.png'
 import spotifyIcon from '../assets/spotifyIcon.png'

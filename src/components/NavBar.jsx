@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const NavBar = ({scroll, elRefs}) => {
   return (
     <div className='nav-bar'>

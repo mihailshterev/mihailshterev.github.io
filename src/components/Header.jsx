@@ -1,4 +1,3 @@
-import React from 'react'
 import mIcon from '../assets/favicon.ico'
 import { FaBars }  from 'react-icons/fa'
 import { useState, useEffect } from 'react';
