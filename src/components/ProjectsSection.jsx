@@ -64,7 +64,7 @@ export const ProjectsSection = ({elRef}) => {
               <div className='ellipse'></div>
               <div className="solar-orbit1">
                 <div 
-                onClick={() => selectProject('1', UniVerse, 'UniVerse' , 'https://github.com/mihailshterev/UniVerseRemastered')} 
+                onClick={() => selectProject('1', UniVerse, 'UniVerse' , 'https://github.com/mihailshterev/universe-next')} 
                 className={projectSelected == '1' ? 'selected-planet' : 'orbiting-ellipse'}></div>
               </div>
               <div className="solar-orbit3">
