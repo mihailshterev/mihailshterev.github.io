@@ -16,4 +16,4 @@ concurrency:
 
 jobs:
   call-deploy-workflow:
-    uses: mihailshterev/blueprints/.github/workflows/static-site-deploy.yml@main
+    uses: mihailshterev/blueprints/.github/workflows/static-site-deploy-pnpm.yml@main
