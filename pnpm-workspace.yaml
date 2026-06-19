@@ -6,3 +6,4 @@ trustPolicyIgnoreAfter: 129600
 
 allowBuilds:
   "@parcel/watcher": false
+  "esbuild": true
