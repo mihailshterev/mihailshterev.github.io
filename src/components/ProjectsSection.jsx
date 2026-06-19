@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { motion, useInView, useAnimation } from "framer-motion";
+import { motion, AnimatePresence, useInView, useAnimation } from "framer-motion";
+import { FaGithub } from "react-icons/fa";
+import { GiRingedPlanet } from "react-icons/gi";
 import projectPlaceholder from "../assets/projects/project-placeholder.webp";
 import MusicUniverse from "../assets/projects/musicUniverse.png";
 import UniVerse from "../assets/projects/UniVerse.jpg";
@@ -87,12 +89,32 @@ export const ProjectsSection = ({ elRef }) => {
           </div>
 
           <div className="project-container">
-            <h3>{projectTitle}</h3>
-            <img src={image} alt="" />
-            {projectLink !== "" && (
-              <a href={projectLink} target="_blank" rel="noreferrer">
-                <button>Github Repo</button>
-              </a>
+            {projectSelected === "" ? (
+              <div className="project-empty">
+                <GiRingedPlanet className="project-empty-icon" />
+                <p>{projectTitle}</p>
+              </div>
+            ) : (
+              <>
+                <h3>{projectTitle}</h3>
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={projectSelected}
+                    src={image}
+                    alt={`${projectTitle} preview`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </AnimatePresence>
+                <a href={projectLink} target="_blank" rel="noreferrer">
+                  <button>
+                    <FaGithub />
+                    View on GitHub
+                  </button>
+                </a>
+              </>
             )}
           </div>
         </motion.div>

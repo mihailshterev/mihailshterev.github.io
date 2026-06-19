@@ -482,38 +482,72 @@ h1 {
   height: 555px;
   padding: 1.1rem;
   border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   font-family: $mainFont;
   font-size: 1.5rem;
   @include flex(center, center, column, 1rem);
   background: rgb(26, 29, 40);
   background: linear-gradient(31deg, rgb(7, 13, 41) 0%, rgba(14, 16, 77, 1) 100%);
   bottom: 2.4rem;
+  box-shadow:
+    0 24px 60px -20px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(129, 137, 255, 0.06);
+
+  h3 {
+    font-family: $headingFont;
+    font-size: 1.8rem;
+    letter-spacing: 0.5px;
+    background: linear-gradient(93deg, rgba(140, 250, 255, 1) 0%, rgb(129, 137, 255) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
   img {
     width: 90%;
-    transition: opacity 0.2s ease;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6);
+  }
+
+  .project-empty {
+    flex: 1;
+    @include flex(center, center, column, 1rem);
+    text-align: center;
+    color: rgba(255, 255, 255, 0.55);
+
+    .project-empty-icon {
+      font-size: 4rem;
+      color: rgba(129, 137, 255, 0.6);
+    }
+  }
+
+  a {
+    text-decoration: none;
   }
 
   button {
-    width: 160px;
     height: 50px;
-    padding: 0.75rem;
+    padding: 0 1.5rem;
     border-radius: 1rem;
     color: white;
     background-color: #0e182b;
     cursor: pointer;
-    transition: 0.2s linear;
-    border-style: none;
+    transition: all 0.25s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 1.4rem;
+    white-space: nowrap;
     z-index: 900;
+    @include flex(center, center, row, 0.6rem);
+
+    svg {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
 
     &:hover {
-      background-color: #fefefe;
-      color: #010c14;
-      box-shadow:
-        0 0 5px #fefefe,
-        0 0 25px #fefefe;
+      background-color: #16243f;
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.12);
     }
   }
 }
