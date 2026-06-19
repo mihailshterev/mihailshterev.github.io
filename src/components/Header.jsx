@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { NavBar } from './NavBar';
 import { RxCross1 } from 'react-icons/rx'
 
-export const Header = ({scroll, homeRef, aboutMeRef, projectsRef, contactsRef}) => {
+export const Header = ({scroll, homeRef, aboutMeRef, projectsRef, spotifyRef, contactsRef}) => {
   const [burgirVisible, setBurgirVisible] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -29,6 +29,7 @@ export const Header = ({scroll, homeRef, aboutMeRef, projectsRef, contactsRef}) 
           <li><button onClick={() => scroll(homeRef)}>Home</button></li>
           <li><button onClick={() => scroll(aboutMeRef)}>About Me</button></li>
           <li><button onClick={() => scroll(projectsRef)}>Projects</button></li>
+          <li><button onClick={() => scroll(spotifyRef)}>Music</button></li>
           <li><button onClick={() => scroll(contactsRef)}>Contact</button></li>
         </ul> 
         :
@@ -42,7 +43,7 @@ export const Header = ({scroll, homeRef, aboutMeRef, projectsRef, contactsRef}) 
         }
       </div>
       {burgirVisible && windowWidth < 660 &&
-        <NavBar scroll={scroll} elRefs={[homeRef, aboutMeRef, projectsRef, contactsRef]}/>
+        <NavBar scroll={scroll} elRefs={[homeRef, aboutMeRef, projectsRef, spotifyRef, contactsRef]}/>
       }
     </div>
   )

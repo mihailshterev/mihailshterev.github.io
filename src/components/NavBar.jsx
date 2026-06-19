@@ -5,7 +5,8 @@ export const NavBar = ({scroll, elRefs}) => {
             <li><button onClick={() => scroll(elRefs[0])}>Home</button></li>
             <li><button onClick={() => scroll(elRefs[1])}>About Me</button></li>
             <li><button onClick={() => scroll(elRefs[2])}>Projects</button></li>
-            <li><button onClick={() => scroll(elRefs[3])}>Contact</button></li>
+            <li><button onClick={() => scroll(elRefs[3])}>Music</button></li>
+            <li><button onClick={() => scroll(elRefs[4])}>Contact</button></li>
         </ul>
     </div>
   )

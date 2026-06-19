@@ -46,21 +46,6 @@ export const ProjectsSection = ({ elRef }) => {
     <div ref={elRef} className="projects-section">
       <div className="projects-container">
         <motion.div
-          className="lines-container"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1 },
-          }}
-          initial="hidden"
-          animate={animationControls}
-          transition={{ duration: 1 }}
-        >
-          <div className="straight-line-short"></div>
-          <div className="point" />
-          <div className="straight-line-long"></div>
-        </motion.div>
-
-        <motion.div
           className="projects-display-container"
           variants={{
             hidden: { opacity: 0, y: 75 },
