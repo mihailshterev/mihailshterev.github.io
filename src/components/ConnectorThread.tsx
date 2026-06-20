@@ -1,12 +1,26 @@
 import { useEffect, useState } from "react";
+import type { RefObject } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 
-function smoothCurve(a, b) {
+interface Point {
+  x: number;
+  y: number;
+}
+
+type Node = Point & { music: boolean };
+
+interface ConnectorThreadProps {
+  wrapperRef: RefObject<HTMLElement | null>;
+  sectionRefs: RefObject<HTMLElement | null>[];
+  musicIndex?: number;
+}
+
+function smoothCurve(a: Point, b: Point) {
   const midY = (a.y + b.y) / 2;
   return ` C ${a.x.toFixed(1)} ${midY.toFixed(1)} ${b.x.toFixed(1)} ${midY.toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
 }
 
-function spiralPath(cx, cy, R) {
+function spiralPath(cx: number, cy: number, R: number) {
   const maxT = Math.PI * 3;
   const steps = 64;
 
@@ -24,10 +38,10 @@ function spiralPath(cx, cy, R) {
   return d;
 }
 
-export const ConnectorThread = ({ wrapperRef, sectionRefs, musicIndex = 3 }) => {
-  const [size, setSize] = useState({ w: 0, h: 0 });
+export const ConnectorThread = ({ wrapperRef, sectionRefs, musicIndex = 3 }: ConnectorThreadProps) => {
+  const [size, setSize] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
   const [path, setPath] = useState("");
-  const [nodes, setNodes] = useState([]);
+  const [nodes, setNodes] = useState<Node[]>([]);
   const [musicFrac, setMusicFrac] = useState(0.6);
 
   const { scrollYProgress } = useScroll();
@@ -40,22 +54,25 @@ export const ConnectorThread = ({ wrapperRef, sectionRefs, musicIndex = 3 }) => 
     }
 
     const compute = () => {
-      const sections = sectionRefs.map((r) => r.current);
-      if (sections.some((s) => !s)) {
-        return;
+      const sections: HTMLElement[] = [];
+      for (const r of sectionRefs) {
+        if (!r.current) {
+          return;
+        }
+        sections.push(r.current);
       }
 
       const W = wrap.offsetWidth;
       const H = wrap.offsetHeight;
       const cx = W / 2;
       const amp = Math.min(W * 0.3, 380);
-      const sideFor = (i) => (i % 2 === 0 ? cx - amp : cx + amp);
+      const sideFor = (i: number) => (i % 2 === 0 ? cx - amp : cx + amp);
 
       const centers = sections.map((s) => s.offsetTop + s.offsetHeight / 2);
-      const anchors = centers.map((cy, i) => ({ x: sideFor(i), y: cy }));
+      const anchors: Point[] = centers.map((cy, i) => ({ x: sideFor(i), y: cy }));
 
-      const start = { x: anchors[0].x, y: 0 };
-      const end = { x: anchors[anchors.length - 1].x, y: H };
+      const start: Point = { x: anchors[0].x, y: 0 };
+      const end: Point = { x: anchors[anchors.length - 1].x, y: H };
       const R = Math.min(amp * 0.55, 120);
 
       const seq = [start, ...anchors, end];

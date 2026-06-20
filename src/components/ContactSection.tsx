@@ -1,9 +1,14 @@
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect } from "react";
+import type { RefObject } from "react";
 import { ContactForm } from "./ContactForm";
 
-export const ContactSection = ({ elRef }) => {
+interface ContactSectionProps {
+  elRef: RefObject<HTMLDivElement | null>;
+}
+
+export const ContactSection = ({ elRef }: ContactSectionProps) => {
   const isInView = useInView(elRef, { once: true });
   const animationControls = useAnimation();
 

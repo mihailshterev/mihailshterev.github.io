@@ -1,16 +1,20 @@
 import { useState, useEffect } from "react";
+import type { RefObject } from "react";
 import { motion, AnimatePresence, useInView, useAnimation } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import { GiRingedPlanet } from "react-icons/gi";
-import projectPlaceholder from "../assets/projects/project-placeholder.webp";
 import MusicUniverse from "../assets/projects/musicUniverse.png";
 import UniVerse from "../assets/projects/UniVerse.jpg";
 import TuneSpace from "../assets/projects/tunespace.png";
 import Sentium from "../assets/projects/sentium.png";
 
-export const ProjectsSection = ({ elRef }) => {
+interface ProjectsSectionProps {
+  elRef: RefObject<HTMLDivElement | null>;
+}
+
+export const ProjectsSection = ({ elRef }: ProjectsSectionProps) => {
   const [projectSelected, setProjectSelected] = useState("");
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState<string | null>(null);
   const [projectTitle, setProjectTitle] = useState("Click on a planet to view a project");
   const [projectLink, setProjectLink] = useState("");
 
@@ -30,7 +34,7 @@ export const ProjectsSection = ({ elRef }) => {
     }
   }, [isInView]);
 
-  function selectProject(id, image, projectTitle, projectLink) {
+  function selectProject(id: string, image: string | null, projectTitle: string, projectLink: string) {
     if (id == projectSelected) {
       id = "";
       image = null;
@@ -100,7 +104,7 @@ export const ProjectsSection = ({ elRef }) => {
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={projectSelected}
-                    src={image}
+                    src={image ?? undefined}
                     alt={`${projectTitle} preview`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

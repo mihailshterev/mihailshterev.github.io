@@ -1,11 +1,16 @@
 import { useEffect } from "react";
+import type { RefObject } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { FaSpotify } from "react-icons/fa";
-import { SiSpotify, SiApplemusic, SiYoutubemusic } from "react-icons/si";
+import { SiSpotify } from "react-icons/si";
 
 const SPOTIFY_ARTIST_ID = "5x0JssU826Vd1fIz7scsPu";
 
-export const SpotifySection = ({ elRef }) => {
+interface SpotifySectionProps {
+  elRef: RefObject<HTMLDivElement | null>;
+}
+
+export const SpotifySection = ({ elRef }: SpotifySectionProps) => {
   const isInView = useInView(elRef, { once: true });
   const animationControls = useAnimation();
 

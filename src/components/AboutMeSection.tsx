@@ -1,7 +1,12 @@
 import { useEffect } from "react";
+import type { RefObject } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 
-export const AboutMeSection = ({ elRef }) => {
+interface AboutMeSectionProps {
+  elRef: RefObject<HTMLDivElement | null>;
+}
+
+export const AboutMeSection = ({ elRef }: AboutMeSectionProps) => {
   const isInView = useInView(elRef, { once: true });
   const animationControls = useAnimation();
 

@@ -1,6 +1,11 @@
 import { motion } from "framer-motion";
+import type { RefObject } from "react";
 
-export const WelcomeSection = ({ elRef }) => {
+interface WelcomeSectionProps {
+  elRef: RefObject<HTMLDivElement | null>;
+}
+
+export const WelcomeSection = ({ elRef }: WelcomeSectionProps) => {
   return (
     <div ref={elRef} className="welcome-section">
       <div className="welcome-section-container">

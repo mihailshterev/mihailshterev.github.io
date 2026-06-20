@@ -1,6 +1,12 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 
-export const ContactForm = ({ animationControls }) => {
+type AnimationControls = ReturnType<typeof useAnimation>;
+
+interface ContactFormProps {
+  animationControls: AnimationControls;
+}
+
+export const ContactForm = ({ animationControls }: ContactFormProps) => {
   return (
     <motion.div
       className="contact-form"

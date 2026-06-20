@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import type { RefObject } from "react";
 import { WelcomeSection } from "./components/WelcomeSection";
 import { Header } from "./components/Header";
 import { AboutMeSection } from "./components/AboutMeSection";
@@ -9,15 +10,15 @@ import { ConnectorThread } from "./components/ConnectorThread";
 import { Footer } from "./components/Footer";
 
 function App() {
-  const pageRef = useRef(null);
-  const homeRef = useRef(null);
-  const aboutMeRef = useRef(null);
-  const projectsRef = useRef(null);
-  const spotifyRef = useRef(null);
-  const contactsRef = useRef(null);
+  const pageRef = useRef<HTMLDivElement>(null);
+  const homeRef = useRef<HTMLDivElement>(null);
+  const aboutMeRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const spotifyRef = useRef<HTMLDivElement>(null);
+  const contactsRef = useRef<HTMLDivElement>(null);
 
-  const handleClick = (elementRef) => {
-    window.scrollTo({ top: elementRef.current.offsetTop, behavior: "smooth" });
+  const handleClick = (elementRef: RefObject<HTMLElement | null>) => {
+    window.scrollTo({ top: elementRef.current?.offsetTop, behavior: "smooth" });
   };
 
   return (
